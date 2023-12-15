@@ -20,3 +20,24 @@ git lfs clone --depth 1 https://www.modelscope.cn/syq163/outputs.git
 cd ../../../
 python sever.py --extensions EmotiVoice_TTS
 ```
+
+# Samlpes
+
+
+<audio controls>
+  <source src="./assets/test_1702656939.wav" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+
+<audio controls>
+  <source src="./assets/test_1702657710.wav" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+
+# Screenshots
+
+![img](./assets/emtoivoce.png)
+
+
+
+![img](./assets/emtoivoce2.png)
