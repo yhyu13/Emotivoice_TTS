@@ -517,11 +517,9 @@ def output_modifier(string, state):
         else:
             texts = split_and_recombine_text(string, desired_length=params['sentence_length'], max_length=1000)
 
-        # TODO
+        # Call generate audio and save numpy output by wavio
         gen = generate_audio(output_dir, output_file, texts)
         wavio.write(str(output_file), gen, config.sampling_rate)
-        # gen = torch.randint(0, 1000, (1, 1)).to('cpu')
-        # torchaudio.save(str(output_file), gen, 24000)
 
         autoplay = 'autoplay' if params['autoplay'] else ''
         string = f'<audio src="file/{output_file.as_posix()}" controls {autoplay}></audio>'
@@ -548,6 +546,7 @@ def generate_audio(output_dir, output_file, texts):
         gen = tts(params['prompt'], text, params['voice'], models)
         all_parts.append(gen)
 
+    # Emotivoice requires in16 conversion from float
     full_audio = torch.cat(all_parts, dim=-1).numpy().astype('int16')
     return full_audio
     
